@@ -1,0 +1,12 @@
+C:\Users\admin\Documents\xCapstone Files\AutoCrossClub\AutoCrossClub\bin\Debug\AutoCrossClub.exe.config
+C:\Users\admin\Documents\xCapstone Files\AutoCrossClub\AutoCrossClub\obj\Debug\AutoCrossClub.csprojResolveAssemblyReference.cache
+C:\Users\admin\Documents\xCapstone Files\AutoCrossClub\AutoCrossClub\bin\Debug\AutoCrossClub.exe
+C:\Users\admin\Documents\xCapstone Files\AutoCrossClub\AutoCrossClub\bin\Debug\AutoCrossClub.pdb
+C:\Users\admin\Documents\xCapstone Files\AutoCrossClub\AutoCrossClub\obj\Debug\AutoCrossClub.exe
+C:\Users\admin\Documents\xCapstone Files\AutoCrossClub\AutoCrossClub\obj\Debug\AutoCrossClub.pdb
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\bin\Debug\AutoCrossClub.exe.config
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\obj\Debug\AutoCrossClub.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\bin\Debug\AutoCrossClub.exe
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\bin\Debug\AutoCrossClub.pdb
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\obj\Debug\AutoCrossClub.exe
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\obj\Debug\AutoCrossClub.pdb

@@ -1,0 +1,5 @@
+C:\Users\admin\Desktop\AutoCrossClub\DAL\bin\Debug\DAL.dll
+C:\Users\admin\Desktop\AutoCrossClub\DAL\bin\Debug\DAL.pdb
+C:\Users\admin\Desktop\AutoCrossClub\DAL\obj\Debug\DAL.dll
+C:\Users\admin\Desktop\AutoCrossClub\DAL\obj\Debug\DAL.pdb
+C:\Users\admin\Desktop\AutoCrossClub\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

@@ -1,0 +1,2 @@
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\obj\Debug\AutoCross.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\AutoCrossClub\AutoCrossClub\bin\Debug\AutoCrossClub.exe.config
