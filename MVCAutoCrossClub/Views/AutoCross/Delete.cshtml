@@ -76,8 +76,9 @@
 
 </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm("Delete", "AutoCross", FormMethod.Post)) {
         @*@Html.AntiForgeryToken()*@
+        @Html.HiddenFor(model => model.id)
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |

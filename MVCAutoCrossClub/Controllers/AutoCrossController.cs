@@ -64,42 +64,41 @@ namespace MVCAutoCrossClub.Controllers
         public ActionResult Create(MemberDB member)
         {
             Logic logic = new Logic();
-            //if (!ModelState.IsValid)
-            //{
-            //    return View("Create", member);
-            //}
-            logic.CreateMember(member.lastName, member.firstName, member.street, member.city,
-                member.state, member.zip, member.phone, member. email);
+            MemberVM mo = new MemberVM();
+
+            mo.id = member.id;
+            mo.lastName = member.lastName ?? "";
+            mo.firstName = member.firstName;
+            mo.street = member.street;
+            mo.city = member.city;
+            mo.state = member.state;
+            mo.zip = member.zip;
+            mo.phone = member.phone;
+            mo.email = member.email;
+            logic.CreateMember(mo);
             return RedirectToAction("Members");
        }
 
-    //    //
-    //    // GET: /Member/Edit/5
+        
+         //GET: /Member/Edit/5
 
-        //[HttpGet]
-        //    public ActionResult Edit(int id)
-        //{
-        //    Logic log = new Logic();
-        //    MemberDB member = log.GetMemberById(id);
-        //    return View(member);
-        //}
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Logic log = new Logic();
+            MemberVM member = log.GetMemberById(id);
+            MemberDB db = new MemberDB(member);
+            return View(db);
+        }
 
-    //    //
+        
     //    // POST: /Member/Edit/5
         [HttpPost]
         public ActionResult Edit(MemberDB member, FormCollection collection)
         {
             Logic log = new Logic();
-            List<MemberVM> memberList = log.GetAllMembers();
-            Logic logic = new Logic();
-            if (!ModelState.IsValid)
-            {
-                return View("Edit", member);
-            }
-            foreach (MemberVM mo in memberList)
-            {
-                if (mo.id == member.id)
-                {
+            MemberVM mo = new MemberVM();
+            
                     mo.id = member.id;
                     mo.lastName = member.lastName ?? "";
                     mo.firstName = member.firstName;
@@ -109,18 +108,18 @@ namespace MVCAutoCrossClub.Controllers
                     mo.zip = member.zip;
                     mo.phone = member.phone;
                     mo.email = member.email;
-                    logic.UpdateMember(mo.id, mo.lastName, mo.firstName, mo.street, mo.city,
-                                         mo.state, mo.zip, mo.phone, mo.email);
-                }
-            }
+                    log.UpdateMember(mo);
             return RedirectToAction("Members");
         }
 
         
     //  GET: /Member/Delete/5
-        public ActionResult Delete(MemberDB member)
+        public ActionResult Delete(int id)
         {
-            return View(member);
+            Logic log = new Logic();
+            MemberVM member = log.GetMemberById(id);
+            MemberDB db = new MemberDB(member);
+            return View(db);
         }
     //  POST: /Member/Delete/5
         [HttpPost]

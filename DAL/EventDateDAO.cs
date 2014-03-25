@@ -9,7 +9,7 @@ namespace DAL
 {
     class EventDateDAO
     {
-       public List<DriverNumberDM> ReadEventDate(string statement,
+       public List<EventDateDM> ReadEventDate(string statement,
           SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(
@@ -32,11 +32,13 @@ namespace DAL
                         Date.id = Convert.ToInt32(data["id"]);
                         Date.Date = Convert.ToDateTime(data["Date"]);
                        Dates.Add(Date);
+                    }
                         try
+
                         {
                             return Dates;
                         }
-                        catch (Exception e)
+                        catch
                         {
                             return null;
                         }
@@ -45,4 +47,4 @@ namespace DAL
             }
         }
     }
-}
+

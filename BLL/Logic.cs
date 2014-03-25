@@ -17,13 +17,13 @@ namespace BLL
             memberDmList = dao.GetAllMembers();
             foreach (MemberDM memberDm in memberDmList)
             {
-                memberVmList.Add(ConvertMemberDmToVm(memberDm));
+                memberVmList.Add(ConvertMember(memberDm));
             }
             return memberVmList;
         }
 
 
-        private MemberVM ConvertMemberDmToVm(MemberDM memberDm)
+        private MemberVM ConvertMember(MemberDM memberDm)
         {
             MemberVM memberVM = new MemberVM();
             if (memberDm != null)
@@ -41,24 +41,41 @@ namespace BLL
             }
             return memberVM;
         }
-
-
-        public void CreateMember(string lastName, string firstName, string street, string city,
-                            string state, int zip, int phone, string email)
+        private MemberDM ConvertMember(MemberVM vm)
         {
-            MemberDAO dao = new MemberDAO();
-            dao.CreateMember(lastName, firstName, street, city, state, zip, phone, email);
-        }
-        public void GetmemberId(string lastName, string firstName, string street, string city,
-                           string state, int zip, int phone, string email)
-        {
-            MemberDAO dao = new MemberDAO();
-            MemberDM movie = dao.GetMember(lastName, firstName, street, city, state, zip, phone, email);
-            if (movie == null)
+            MemberDM dm = new MemberDM();
+            if (vm != null)
             {
-                CreateMember(lastName, firstName, street, city, state, zip, phone, email);
-                movie.id = dao.GetMember(lastName, firstName, street, city, state, zip, phone, email).id;
+                MemberDAO dao = new MemberDAO();
+                dm.id = vm.id;
+                dm.lastName = vm.lastName;
+                dm.firstName = vm.firstName;
+                dm.street = vm.street;
+                dm.city = vm.city;
+                dm.state = vm.state;
+                dm.zip = vm.zip;
+                dm.phone = vm.phone;
+                dm.email = vm.email;
             }
+            return dm;
+        }
+
+
+
+        public void CreateMember(MemberVM vm)
+        {
+            MemberDAO dao = new MemberDAO();
+            dao.CreateMember(ConvertMember(vm));
+        }
+        public int GetmemberId(MemberVM vm)
+        {
+            MemberDAO dao = new MemberDAO();
+            MemberDM member = dao.GetMember(ConvertMember(vm));
+            if (member == null)
+            {
+                CreateMember(vm);
+            }
+            return dao.GetMember(ConvertMember(vm)).id;
         }
         public void DeleteMember(int id)
         {
@@ -66,12 +83,18 @@ namespace BLL
             dao.DeleteMember(id);
          }
 
-        public void UpdateMember(int id, string lastName, string firstName, string street, string city,
-                           string state, int zip, int phone, string email)
+        public void UpdateMember(MemberVM member)
         {
-            MemberDM memberDm = new MemberDM();
+            MemberDM memberDm = ConvertMember(member);
             MemberDAO dao = new MemberDAO();
-            dao.UpdateMemberDB(id, lastName, firstName, street, city, state, zip, phone, email);
+
+            dao.UpdateMemberDB(memberDm);
+        }
+        public MemberVM GetMemberById(int id)
+        {
+            MemberDAO dao = new MemberDAO();
+            MemberDM dm = dao.GetMemberById(id);
+            return ConvertMember(dm);
         }
     }
 }

@@ -29,9 +29,8 @@ namespace DAL
                     {
                         DriverDM driver = new DriverDM();
                         driver.id = Convert.ToInt32(data["id"]);
-                        driver.DateId = Convert.ToInt32(data["DateId"]);
-                        driver.lastNameId = Convert.ToInt32(data["lastNameId"]);
-                        driver.firstNameId = Convert.ToInt32(data["firstNameId"]);
+                        driver.DateID = Convert.ToInt32(data["DateId"]);
+                        driver.memberID = Convert.ToInt32(data["memberId"]);
                         driver.carNumber = data["carNumberId"].ToString();
                         driver.autoClass = data["autoClassId"].ToString();
                         drivers.Add(driver);

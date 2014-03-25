@@ -55,20 +55,19 @@ namespace DAL
         {
             return ReadMember("GetAllMembers", null);
         }
-        public void CreateMember(string lastName, string firstName, string street, string city,
-                           string state, int zip, int phone, string email)
+        public void CreateMember(MemberDM dm)
         {
             DAO dao = new DAO();
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@lastName",lastName),
-                new SqlParameter("@firstName",firstName),
-                new SqlParameter("@street",street),
-                new SqlParameter("@city",city),
-                new SqlParameter("@state",state),
-                new SqlParameter("@zip",zip),
-                new SqlParameter("@phone",phone),
-                new SqlParameter("@email",email),
+                new SqlParameter("@lastName", dm.lastName),
+                new SqlParameter("@firstName", dm.firstName),
+                new SqlParameter("@street", dm.street),
+                new SqlParameter("@city", dm.city),
+                new SqlParameter("@state",dm.state),
+                new SqlParameter("@zip", dm.zip),
+                new SqlParameter("@phone",dm.phone),
+                new SqlParameter("@email",dm.email)
             };
             dao.Write("CreateMember", parameters);
         }
@@ -93,19 +92,18 @@ namespace DAL
             return ReadMember("GetMemberById", parameters).SingleOrDefault();
         }
 
-         public MemberDM GetMember(string lastName, string firstName, string street, string city,
-                           string state, int zip, int phone, string email)
+        public MemberDM GetMember(MemberDM dm)
         {
             SqlParameter[] parameters = new SqlParameter[]
                 {
-                new SqlParameter("@lastName",lastName),
-                new SqlParameter("@firstName",firstName),
-                new SqlParameter("@street",street),
-                new SqlParameter("@city",city),
-                new SqlParameter("@state",state),
-                new SqlParameter("@zip",zip),
-                new SqlParameter("@phone",phone),
-                new SqlParameter("@email",email),
+                new SqlParameter("@lastName", dm.lastName),
+                new SqlParameter("@firstName", dm.firstName),
+                new SqlParameter("@street", dm.street),
+                new SqlParameter("@city", dm.city),
+                new SqlParameter("@state",dm.state),
+                new SqlParameter("@zip", dm.zip),
+                new SqlParameter("@phone",dm.phone),
+                new SqlParameter("@email",dm.email)
                 };
             MemberDM mo = new MemberDM();
             List<MemberDM> movie = new List<MemberDM>();
@@ -116,21 +114,20 @@ namespace DAL
             }
             return mo;
         }
-         public void UpdateMemberDB(int id, string lastName, string firstName, string street, string city,
-                           string state, int zip, int phone, string email)
+         public void UpdateMemberDB(MemberDM dm)
          {
              DAO dao = new DAO();
              SqlParameter[] parameters = new SqlParameter[]
                {
-                new SqlParameter("@id",id),
-                new SqlParameter("@lastName",lastName),
-                new SqlParameter("@firstName",firstName),
-                new SqlParameter("@street",street),
-                new SqlParameter("@city",city),
-                new SqlParameter("@state",state),
-                new SqlParameter("@zip",zip),
-                new SqlParameter("@phone",phone),
-                new SqlParameter("@email",email),
+                new SqlParameter("@id", dm.id),
+                new SqlParameter("@lastName", dm.lastName),
+                new SqlParameter("@firstName", dm.firstName),
+                new SqlParameter("@street", dm.street),
+                new SqlParameter("@city", dm.city),
+                new SqlParameter("@state",dm.state),
+                new SqlParameter("@zip", dm.zip),
+                new SqlParameter("@phone",dm.phone),
+                new SqlParameter("@email",dm.email)
                 };
              dao.Write("UpdateMember", parameters);
          }

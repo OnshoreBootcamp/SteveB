@@ -36,17 +36,18 @@ namespace DAL
                         Scoring.autoClassID = Convert.ToInt32(data["autoClassID"]);
                         Scoring.run = data["runID"].ToString();
                         Scoring.runTime = Convert.ToDecimal(data["runTimeID"]);
-                        try
-                        {
-                            return Score;
-                        }
-                        catch (Exception e)
-                        {
-                            return null;
-                        }
+                    }
+                    try
+                    {
+                        return Score;
+                    }
+                    catch (Exception e)
+                    {
+                        return null;
                     }
                 }
             }
         }
     }
 }
+
