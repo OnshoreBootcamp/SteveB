@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class DriverNumberDAO
+    public class DriverNumberDAO
     {
         public List<DriverNumberDM> ReadDriverNumber(string statement,
           SqlParameter[] parameters)
@@ -37,7 +37,7 @@ namespace DAL
                     {
                         return numbers;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         return null;
                     }

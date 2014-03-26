@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class DriverNumberDM
+    public class DriverNumberDM
     {
         public int id { get; set; }
         public int carNumberID { get; set; }

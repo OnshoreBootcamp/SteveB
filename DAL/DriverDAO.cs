@@ -39,7 +39,7 @@ namespace DAL
                     {
                         return drivers;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         return null;
                     }

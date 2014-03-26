@@ -43,7 +43,7 @@ namespace DAL
                     {
                         return members;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         return null;
                     }

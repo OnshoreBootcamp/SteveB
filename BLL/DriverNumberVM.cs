@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class DriverNumberVM
+    public class DriverNumberVM
     {
         public int id { get; set; }
         public int carNumberID { get; set; }

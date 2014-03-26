@@ -17,55 +17,17 @@ namespace MVCAutoCrossClub.Controllers
             return View("Members", members);
         }
 
-    //    static List<Member> members = new List<Member>();
-    //    static List<Member> finalMembers = new List<Member>();
-    //    //
-    //    // GET: /Member/
-    //    public ActionResult Index()
-    //    {
-    //        List<Member> memberIndexList = GetAllMembers();
-    //        return View(memberIndexList);
-    //    }
-
-    //    public List<Member> GetAllMembers()
-    //    {
-    //        List<Member> memberList = new List<Member>();
-    //        List<MemberVM> newMember = new List<MemberVM>();
-    //        Logic logic = new Logic();
-    //        Member member = new Member();
-    //        newMember = logic.GetAllMembers();
-    //        foreach (MemberVM memberVm in newMember)
-    //        {
-    //            member = ConvertMemberVmToMember(memberVm);
-    //            bool x = memberList.Contains(member);
-    //            if (x == false)
-    //            {
-    //                memberList.Add(member);
-    //            }
-    //        }
-    //        return memberList;
-    //    }
-
-    //    //
-    //    // GET: /Member/Details/5
-    //    public ActionResult Details(Member member)
-    //    {
-    //        return View(member);
-    //    }
-
        //  GET: /Member/Create
         public ActionResult Create()
         {
             return View();
         }
-
      //    POST: /Member/Create
         [HttpPost]
         public ActionResult Create(MemberDB member)
         {
             Logic logic = new Logic();
             MemberVM mo = new MemberVM();
-
             mo.id = member.id;
             mo.lastName = member.lastName ?? "";
             mo.firstName = member.firstName;
@@ -78,10 +40,7 @@ namespace MVCAutoCrossClub.Controllers
             logic.CreateMember(mo);
             return RedirectToAction("Members");
        }
-
-        
          //GET: /Member/Edit/5
-
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -90,29 +49,25 @@ namespace MVCAutoCrossClub.Controllers
             MemberDB db = new MemberDB(member);
             return View(db);
         }
-
-        
-    //    // POST: /Member/Edit/5
+         // POST: /Member/Edit/5
         [HttpPost]
         public ActionResult Edit(MemberDB member, FormCollection collection)
         {
             Logic log = new Logic();
             MemberVM mo = new MemberVM();
             
-                    mo.id = member.id;
-                    mo.lastName = member.lastName ?? "";
-                    mo.firstName = member.firstName;
-                    mo.street = member.street;
-                    mo.city = member.city;
-                    mo.state = member.state;
-                    mo.zip = member.zip;
-                    mo.phone = member.phone;
-                    mo.email = member.email;
-                    log.UpdateMember(mo);
+            mo.id = member.id;
+            mo.lastName = member.lastName ?? "";
+            mo.firstName = member.firstName;
+            mo.street = member.street;
+            mo.city = member.city;
+            mo.state = member.state;
+            mo.zip = member.zip;
+            mo.phone = member.phone;
+            mo.email = member.email;
+            log.UpdateMember(mo);
             return RedirectToAction("Members");
         }
-
-        
     //  GET: /Member/Delete/5
         public ActionResult Delete(int id)
         {

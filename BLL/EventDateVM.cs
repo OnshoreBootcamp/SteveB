@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    class EventDateVM
+   public class EventDateVM
     {
         public int id { get; set; }
         public DateTime Date { get; set; }

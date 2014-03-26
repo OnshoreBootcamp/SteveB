@@ -21,8 +21,6 @@ namespace BLL
             }
             return memberVmList;
         }
-
-
         private MemberVM ConvertMember(MemberDM memberDm)
         {
             MemberVM memberVM = new MemberVM();
@@ -59,9 +57,6 @@ namespace BLL
             }
             return dm;
         }
-
-
-
         public void CreateMember(MemberVM vm)
         {
             MemberDAO dao = new MemberDAO();
@@ -82,12 +77,10 @@ namespace BLL
             MemberDAO dao = new MemberDAO();
             dao.DeleteMember(id);
          }
-
         public void UpdateMember(MemberVM member)
         {
             MemberDM memberDm = ConvertMember(member);
             MemberDAO dao = new MemberDAO();
-
             dao.UpdateMemberDB(memberDm);
         }
         public MemberVM GetMemberById(int id)
@@ -96,6 +89,77 @@ namespace BLL
             MemberDM dm = dao.GetMemberById(id);
             return ConvertMember(dm);
         }
+
+
+
+
+        public List<EventDateVM> GetAllEventDates()
+        {
+            List<EventDateVM> dateVmList = new List<EventDateVM>();
+            List<EventDateDM> dateDmList = new List<EventDateDM>();
+            EventDateDAO dao = new EventDateDAO();
+            dateDmList = dao.GetAllEventDates();
+            foreach (EventDateDM dateDm in dateDmList)
+            {
+                dateVmList.Add(ConvertEventDate(dateDm));
+            }
+            return dateVmList;
+        }
+        public EventDateVM ConvertEventDate(EventDateDM dateDm)
+        {
+            EventDateVM dateVM = new EventDateVM();
+            if (dateDm != null)
+            {
+                EventDateDAO dao = new EventDateDAO();
+                dateVM.id = dateDm.id;
+                dateVM.Date = dateDm.Date;
+            }
+            return dateVM;
+        }
+        public EventDateDM ConvertEventDate(EventDateVM vm)
+        {
+            EventDateDM dm = new EventDateDM();
+            if (vm != null)
+            {
+                EventDateDAO dao = new EventDateDAO();
+                dm.id = vm.id;
+                dm.Date = vm.Date;
+            }
+            return dm;
+        }
+        public void CreateEventDate(EventDateVM vm)
+        {
+            EventDateDAO dao = new EventDateDAO();
+            dao.CreateEventDate(ConvertEventDate(vm));
+        }
+        public int GetDateId(EventDateVM vm)
+        {
+            EventDateDAO dao = new EventDateDAO();
+            EventDateDM Date = dao.GetEventDate(ConvertEventDate(vm));
+            if (Date == null)
+            {
+                CreateEventDate(vm);
+            }
+            return dao.GetEventDate(ConvertEventDate(vm)).id;
+        }
+        public void DeleteEventDate(int id)
+        {
+            EventDateDAO dao = new EventDateDAO();
+            dao.DeleteEventDate(id);
+        }
+        public void UpdateEventDate(EventDateVM Date)
+        {
+            EventDateDM DateDm = ConvertEventDate(Date);
+            EventDateDAO dao = new EventDateDAO();
+            dao.UpdateEventDateDB(DateDm);
+        }
+        public EventDateVM GetEventDateById(int id)
+        {
+            EventDateDAO dao = new EventDateDAO();
+            EventDateDM dm = dao.GetEventDateById(id);
+            return ConvertEventDate(dm);
+        }
+
     }
 }
  

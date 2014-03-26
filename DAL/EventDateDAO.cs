@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class EventDateDAO
+    public class EventDateDAO
     {
-       public List<EventDateDM> ReadEventDate(string statement,
-          SqlParameter[] parameters)
+        public List<EventDateDM> ReadEventDate(string statement,
+           SqlParameter[] parameters)
         {
             using (SqlConnection connection = new SqlConnection(
                 @"Data Source=.\SQLEXPRESS;Initial Catalog=Autocross;
                 Integrated Security=SSPI;"))
-                {
+            {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(statement, connection))
                 {
@@ -31,20 +31,59 @@ namespace DAL
                         EventDateDM Date = new EventDateDM();
                         Date.id = Convert.ToInt32(data["id"]);
                         Date.Date = Convert.ToDateTime(data["Date"]);
-                       Dates.Add(Date);
+                        Dates.Add(Date);
                     }
-                        try
-
-                        {
-                            return Dates;
-                        }
-                        catch
-                        {
-                            return null;
-                        }
+                    try
+                    {
+                        return Dates;
+                    }
+                    catch
+                    {
+                        return null;
                     }
                 }
             }
         }
+        public List<EventDateDM> GetAllEventDates()
+        {
+            return ReadEventDate("GetAllEventDates", null);
+        }
+        public void CreateEventDate(EventDateDM dm)
+        {
+            DAO dao = new DAO();
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Date", dm.Date),
+            };
+            dao.Write("CreateEventDate", parameters);
+        }
+        public List<EventDateDM> GetAllEventDates()
+        {
+            return ReadEventDate("GetAllEventDates", null);
+        }
+
+
+        public EventDateDM GetEventDateById(int id)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Id",id)
+            };
+            return ReadEventDate("GetEventDateById", parameters).SingleOrDefault();
+        }
+
+
+        public void UpdateEventDateDB(EventDateDM dm)
+        {
+            DAO dao = new DAO();
+            SqlParameter[] parameters = new SqlParameter[]
+               {
+                new SqlParameter("@id", dm.id),
+                new SqlParameter("@Date", dm.Date),
+              
+                };
+            dao.Write("UpdateEventDate", parameters);
+        }
     }
+}
 
